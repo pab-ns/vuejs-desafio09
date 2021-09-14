@@ -11,28 +11,32 @@
           <h3 class="font-weight-bold text-center">Filtro</h3>
           <!-- No v-model. Reemplazamos por Value y @input (que finalmente es lo mismo que un v-model) -->
           <!-- Cada vez que alguien escriba algo, va a guardarlo en busquedadInput -->
-          <input
-            type="text"
-            placeholder="¿Qué juego buscas..?"
-            :value="$store.state.busquedadInput"
-            @input="$store.dispatch('setBusquedad', $event.target.value)"
-          />
+          <div class="w-100 text-center">
+            <input
+              type="text"
+              placeholder="¿Qué juego buscas..?"
+              :value="$store.state.busquedadInput"
+              @input="$store.dispatch('setBusquedad', $event.target.value)"
+            />
 
-          <!-- si no hay nada en el input que salga un texto para instrucciones. Lo hacemos con v-if y v-else -->
-          <ListaJuegos
-            v-if="$store.getters.juegosSegunBusquedad.length > 0"
-            :juegos="$store.getters.juegosSegunBusquedad"
-          />
+            <!-- si no hay nada en el input que salga un texto para instrucciones. Lo hacemos con v-if y v-else -->
+            <ListaJuegos
+              v-if="$store.getters.juegosSegunBusquedad.length > 0"
+              :juegos="$store.getters.juegosSegunBusquedad"
+            />
 
-          <!-- texto instruccion v-else -->
-          <small v-else>Escribe en el buscador el juego</small>
+            <!-- texto instruccion v-else -->
+            <small v-else class="d-block font-italic">
+              Escribe arriba el juego que buscas
+            </small>
+          </div>
         </div>
 
         <br />
 
         <!-- cantidad -->
-        <div class="col-md-6">
-          <h3 class="font-weight-bold text-center">
+        <div class="col-md-6 text-center mt-5">
+          <h3 class="font-weight-bold ">
             Juegos totales y stock inicial
           </h3>
           <ul>
@@ -41,7 +45,7 @@
           </ul>
         </div>
         <!-- listado -->
-        <div class="col-md-6 text-center">
+        <div class="col-md-6 text-center mt-5">
           <h3 class="font-weight-bold ">
             Listado de Juegos
           </h3>
